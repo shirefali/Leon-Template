@@ -34,7 +34,7 @@ body {
     color: #777;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .special-heading {
         font-size: 60px;
     }
@@ -73,6 +73,34 @@ body {
     margin-left: auto;
 }
 
+/* start scroll button  */
+.scroll-button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 200;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    transform: translatex(200px);
+    cursor: pointer;
+}
+
+.scroll-button.show {
+    transform: translatex(0);
+}
+
+.scroll-button i {
+    color: #fff;
+    font-size: 30px;
+}
+/* End scroll button  */
+
 /* Start header  */
 
 .header .container {
@@ -102,7 +130,7 @@ body {
     transition: 0.3s;
 }
 
-.icon::before {
+.header .icon::before {
     content: "";
     position: absolute;
     height: 2px;
@@ -114,7 +142,7 @@ body {
     z-index: 3;
 }
 
-.icon::after {
+.header .icon::after {
     content: "";
     position: absolute;
     height: 2px;
@@ -124,16 +152,25 @@ body {
     transition: 0.3s;
 }
 
-.icon:hover::before,
-.icon:hover::after {
+.header .icon.close {
+    background-color: indianred;
+}
+
+.icon.close:hover {
+    background-color: red;
+}
+
+.icon.close::before,
+.icon.close::after {
     box-shadow: none;
     transform: translate(0);
 }
 
-.icon:hover::before {
+.icon.close::before {
     transform: rotate(-45deg);
 }
-.icon:hover::after {
+
+.icon.close::after {
     transform: rotate(45deg);
 }
 
@@ -147,13 +184,12 @@ body {
     width: 180px;
     z-index: -3;
     opacity: 0;
-    /* display: none; */
     transition: 0.3s;
     z-index: -3;
     transform: translatey(50px);
 }
 
-.links:hover ul {
+.links ul.show {
     opacity: 1;
     transform: translatey(0);
     z-index: 3;
@@ -185,6 +221,7 @@ body {
     padding: 15px;
     transition: 0.3s;
 }
+
 /* End header  */
 /* start landing */
 .landing {
